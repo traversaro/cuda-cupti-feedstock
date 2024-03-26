@@ -25,7 +25,7 @@ source:
   sha256: 532118bdcf168d80e634daf1407a9819a46e9d6ded180eaae02758565d1a429a  # [win]
 
 build:
-  number: 0
+  number: 1
   binary_relocation: false
   skip: true  # [osx]
 
@@ -79,6 +79,9 @@ outputs:
       doc_url: https://docs.nvidia.com/cuda/cupti/index.html
 
   - name: cuda-cupti-dev
+    build:
+      run_exports:
+        - {{ pin_subpackage("cuda-cupti", max_pin="x") }}
     files:
       - lib/checkpoint.so                         # [linux]
       - lib/libcupti.so                           # [linux]
